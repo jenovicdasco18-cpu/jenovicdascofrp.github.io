@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenovicdascofrp Tool | Logiciel de Déblocage & Maintenance Mobile</title>
+    <style>
+        /* --- VARIABLES DE COULEURS (Style Tech/Dark) --- */
+        :root {
+            --bg-principal: #0b0f19;
+            --bg-secondaire: #161b26;
+            --accent-bleu: #00d2ff;
+            --accent-violet: #7928ca;
+            --texte-blanc: #ffffff;
+            --texte-gris: #94a3b8;
+            --card-bg: #1e293b;
+        }
+
+        /* --- SÉLECTION & SCROLLBAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texte-blanc);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- EN-TÊTE / NAVBAR --- */
+        header {
+            background-color: rgba(22, 27, 38, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #232d42;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--texte-blanc);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-bleu);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--texte-gris);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-bleu);
+        }
+
+        /* --- SECTION HÉRO (ACCUEIL) --- */
+        .hero {
+            padding: 10rem 2rem 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Effet de lumière en arrière-plan */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--accent-bleu), var(--accent-violet));
+            filter: blur(150px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--accent-bleu), #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--texte-gris);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-bleu) 0%, #0072ff 100%);
+            color: var(--bg-principal);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0, 210, 255, 0.6);
+        }
+
+        .version-tag {
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--texte-gris);
+        }
+
+        /* --- SECTION FONCTIONNALITÉS --- */
+        .features {
+            background-color: var(--bg-secondaire);
+            padding: 6rem 2rem;
+            border-top: 1px solid #232d42;
+            border-bottom: 1px solid #232d42;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-title span {
+            color: var(--accent-bleu);
+        }
+
+        .grid-features {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-bleu);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--texte-gris);
+            font-size: 0.95rem;
+        }
+
+        /* --- SECTION COMPATIBILITÉ --- */
+        .compatibility {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .chip-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .chip {
+            background-color: var(--bg-secondaire);
+            border: 1px solid #232d42;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--texte-blanc);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #070a10;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid #161b26;
+            color: var(--texte-gris);
+            font-size: 0.9rem;
+        }
+
+        footer p span {
+            color: var(--accent-bleu);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplifié pour le mobile */
+            .grid-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Jenovicdascofrp <span>Tool</span></div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#fonctions">Fonctionnalités</a></li>
+                <li><a href="#support">Compatibilité</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION HERO -->
+    <section class="hero" id="accueil">
+        <h1>Solution Complète pour le <span>Déblocage & Flash Mobile</span></h1>
+        <p>Un outil tout-en-un puissant et rapide conçu pour les techniciens. Gérez la maintenance logicielle, contournez les protections d'usine (FRP) et flashez vos appareils en toute sécurité.</p>
+        
+        <!-- Remplace le '#' ci-dessous par le lien direct vers le fichier d'installation (.exe ou .zip) -->
+        <a href="#" class="btn-download">Télécharger Jenovicdascofrp Tool</a>
+        <span class="version-tag">Version stable v1.0 | Compatible Windows 10 / 11</span>
+    </section>
+
+    <!-- SECTION FONCTIONNALITÉS -->
+    <section class="features" id="fonctions">
+        <h2 class="section-title">Pourquoi choisir <span>Notre Outil ?</span></h2>
+        
+        <div class="grid-features">
+            <!-- Carte 1 -->
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Bypass FRP d'usine</h3>
+                <p>Contournez efficacement la vérification du compte Google (FRP) après une réinitialisation d'usine en quelques clics.</p>
+            </div>
+            <!-- Carte 2 -->
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Flashing Ultra-Rapide</h3>
+                <p>Mettez à jour ou réinstallez le firmware d'origine (ROM) de vos téléphones sans risque de brick.</p>
+            </div>
+            <!-- Carte 3 -->
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>Mode Maintenance</h3>
+                <p>Lecture des informations système de l'appareil, reset d'usine d'urgence et gestion des niveaux de sécurité (Bit).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION COMPATIBILITÉ -->
+    <section class="compatibility" id="support">
+        <h2 class="section-title">Architectures & CPU <span>Supportés</span></h2>
+        <p style="color: var(--texte-gris); max-width: 600px; margin: 0 auto;">Le logiciel interagit de manière native avec les chipsets les plus courants du marché mobile.</p>
+        
+        <div class="chip-container">
+            <div class="chip">MediaTek (MTK)</div>
+            <div class="chip">Qualcomm Snapdragon</div>
+            <div class="chip">Samsung Exynos</div>
+            <div class="chip">Spreadtrum / Unisoc</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 <span>Jenovicdascofrp Tool</span>. Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #475569;">Développé à des fins éducatives et professionnelles de maintenance.</p>
+    </footer>
+
+</body>
+</html>
